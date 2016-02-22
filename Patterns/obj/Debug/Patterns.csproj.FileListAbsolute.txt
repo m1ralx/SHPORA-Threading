@@ -1,0 +1,9 @@
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\Patterns.exe.config
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\Files\ips.zip
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\Patterns.exe
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\Patterns.pdb
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\nunit.framework.dll
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\bin\Debug\nunit.framework.xml
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.csprojResolveAssemblyReference.cache
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.exe
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.pdb

@@ -1,0 +1,7 @@
+syntax: glob
+packages/*
+*/bin/*
+*/obj/*
+*.user
+*.suo
+Patterns/Files/ips.txt

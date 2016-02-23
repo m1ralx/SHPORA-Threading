@@ -7,3 +7,6 @@ C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patte
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.csprojResolveAssemblyReference.cache
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.exe
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patterns\obj\Debug\Patterns.pdb
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\Patterns.exe.config
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\obj\Debug\Patterns.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\obj\Debug\Patterns.pdb

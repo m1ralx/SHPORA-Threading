@@ -8,3 +8,6 @@ C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\obj\Debug\JPEG.pdb
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\bin\Debug\System.Collections.Immutable.dll
 C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\bin\Debug\JPEG.exe.config
+C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\obj\Debug\JPEG.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\obj\Debug\JPEG.pdb

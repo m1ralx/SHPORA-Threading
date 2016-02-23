@@ -1,0 +1,5 @@
+C:\Users\Администратор\Desktop\SHPORA-Threading\ThreadPool\bin\Debug\ThreadPool.exe.config
+C:\Users\Администратор\Desktop\SHPORA-Threading\ThreadPool\bin\Debug\ThreadPool.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\ThreadPool\bin\Debug\ThreadPool.pdb
+C:\Users\Администратор\Desktop\SHPORA-Threading\ThreadPool\obj\Debug\ThreadPool.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\ThreadPool\obj\Debug\ThreadPool.pdb

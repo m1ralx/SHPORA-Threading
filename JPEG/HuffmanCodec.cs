@@ -88,8 +88,10 @@ namespace JPEG
             var root = BuildHuffmanTree(frequences);
 
             var encodeTable = new BitsWithLength[byte.MaxValue + 1];
-            FillEncodeTable(root, encodeTable);
-
+            var manualResetEvents =
+                frequences.Keys.ToDictionary(b => b, b => new ManualResetEvent(false));
+            FillEncodeTable(root, encodeTable, manualResetEvents);
+            WaitHandle.WaitAll(manualResetEvents.Values.ToArray());
             var bitsBuffer = new BitsBuffer();
 
             foreach (var b in data)
@@ -138,21 +140,25 @@ namespace JPEG
             return result;
         }
 
-        private static void FillEncodeTable(HuffmanNode node, BitsWithLength[] encodeSubstitutionTable,
+        private static void FillEncodeTable(HuffmanNode node, BitsWithLength[] encodeSubstitutionTable, Dictionary<byte, ManualResetEvent> manualResetEvents,
             int bitvector = 0, int depth = 0)
         {
             if (node.LeafLabel != null)
+            {
                 encodeSubstitutionTable[node.LeafLabel.Value] = new BitsWithLength {Bits = bitvector, BitsCount = depth};
+                manualResetEvents[node.LeafLabel.Value].Set();
+            }
             else
             {
                 if (node.Left != null)
                 {
                     ThreadPool.QueueUserWorkItem(state =>
-                    {
-                        FillEncodeTable(node.Left, encodeSubstitutionTable, (bitvector << 1) + 1, depth + 1);
-                    });
-                    FillEncodeTable(node.Left, encodeSubstitutionTable, (bitvector << 1) + 1, depth + 1);
-                    FillEncodeTable(node.Right, encodeSubstitutionTable, (bitvector << 1) + 0, depth + 1);
+                        FillEncodeTable(node.Left, encodeSubstitutionTable, manualResetEvents, (bitvector << 1) + 1,
+                            depth + 1)
+                        );
+                    ThreadPool.QueueUserWorkItem(state =>
+                        FillEncodeTable(node.Right, encodeSubstitutionTable, manualResetEvents, (bitvector << 1) + 0,
+                            depth + 1));
                 }
             }
         }

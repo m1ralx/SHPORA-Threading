@@ -10,7 +10,7 @@ namespace JPEG
 
         [Option('t', "threads", DefaultValue = 1,
             HelpText = "Max parallelism degree.")]
-        public int Threads { get; set; }
+        public int MaxDegreeOfParallelism { get; set; }
 
         [Option('w', "window", DefaultValue = 8,
             HelpText = "Size of DCT window")]

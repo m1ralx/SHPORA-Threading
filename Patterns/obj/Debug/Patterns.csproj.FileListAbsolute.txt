@@ -10,3 +10,9 @@ C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\Patte
 C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\Patterns.exe.config
 C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\obj\Debug\Patterns.exe
 C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\obj\Debug\Patterns.pdb
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\Files\ips.zip
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\Patterns.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\Patterns.pdb
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\nunit.framework.dll
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\bin\Debug\nunit.framework.xml
+C:\Users\Администратор\Desktop\SHPORA-Threading\Patterns\obj\Debug\Patterns.csprojResolveAssemblyReference.cache

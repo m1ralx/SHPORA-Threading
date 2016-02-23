@@ -1,0 +1,6 @@
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\bin\Debug\QuantumOfSwitching.exe.config
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\bin\Debug\QuantumOfSwitching.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\bin\Debug\QuantumOfSwitching.pdb
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\obj\Debug\QuantumOfSwitching.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\obj\Debug\QuantumOfSwitching.exe
+C:\Users\Администратор\Desktop\SHPORA-Threading\QuantumOfSwitching\obj\Debug\QuantumOfSwitching.pdb

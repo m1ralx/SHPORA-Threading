@@ -20,3 +20,5 @@ C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\bin\Debug\Comm
 C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\bin\Debug\nunit.framework.xml
 C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\bin\Debug\System.Collections.Immutable.xml
 C:\Users\Администратор\Desktop\SHPORA-Threading\JPEG\obj\Debug\JPEG.csprojResolveAssemblyReference.cache
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\bin\Debug\CommandLine.dll
+C:\Users\Alexey\Desktop\SHPORA\parallelprogramming-shpora2016-56f562c98bbf\JPEG\bin\Debug\CommandLine.xml

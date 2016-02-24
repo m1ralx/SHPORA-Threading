@@ -1,79 +1,78 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace JPEG
 {
-    public static class DCTHelper
+    public class DCTHelper
     {
-        public static CompressedImage CompressWithDCT(this double[,] channelPixels, int DCTSize,
-            int compressionLevel = 4)
+        public static double[,] DCT2D(double[,] input)
         {
-            var frequencesPerBlock = -1;
+            var height = input.GetLength(0);
+            var width = input.GetLength(1);
+            var coeffs = new double[width, height];
 
-            var height = channelPixels.GetLength(0);
-            var width = channelPixels.GetLength(1);
-
-            var result = new List<double>();
-
-            for (var y = 0; y < height; y += DCTSize)
+            for (var u = 0; u < width; u++)
             {
-                for (var x = 0; x < width; x += DCTSize)
+                for (var v = 0; v < height; v++)
                 {
-                    var subMatrix = channelPixels.GetSubMatrix(y, DCTSize, x, DCTSize, DCTSize);
-                    subMatrix.ShiftMatrixValues(-128);
-
-                    var channelFreqs = DCT.DCT2D(subMatrix);
-
-                    frequencesPerBlock = DCTSize*DCTSize;
-                    for (var i = 0; i < DCTSize; i++)
+                    var sum = 0d;
+                    for (var x = 0; x < width; x++)
                     {
-                        for (var j = 0; j < DCTSize; j++)
+                        for (var y = 0; y < height; y++)
                         {
-                            if (i + j < compressionLevel)
-                            {
-                                result.Add(channelFreqs[i, j]);
-                                continue;
-                            }
-                            channelFreqs[i, j] = 0;
-                            frequencesPerBlock--;
+                            var a = input[x, y];
+                            sum += BasisFunction(a, u, v, x, y, height, width);
                         }
                     }
+                    coeffs[u, v] = sum*Beta(height, width)*Alpha(u)*Alpha(v);
                 }
             }
-
-            return new CompressedImage
-            {
-                CompressionLevel = compressionLevel,
-                FrequencesPerBlock = frequencesPerBlock,
-                Frequences = result,
-                Height = height,
-                Width = width
-            };
+            return coeffs;
         }
 
-        public static double[,] UncompressWithDCT(this CompressedImage image, int DCTSize)
+        public static double[,] IDCT2D(double[,] coeffs)
         {
-            var result = new double[image.Height, image.Width];
+            var height = coeffs.GetLength(0);
+            var width = coeffs.GetLength(1);
+            var output = new double[width, height];
 
-            var freqNum = 0;
-            for (var y = 0; y < image.Height; y += DCTSize)
+            for (var x = 0; x < width; x++)
             {
-                for (var x = 0; x < image.Width; x += DCTSize)
+                for (var y = 0; y < height; y++)
                 {
-                    var channelFreqs = new double[DCTSize, DCTSize];
-                    for (var i = 0; i < DCTSize; i++)
+                    var sum = 0d;
+
+                    for (var u = 0; u < width; u++)
                     {
-                        for (var j = 0; j < DCTSize; j++)
+                        for (var v = 0; v < height; v++)
                         {
-                            if (i + j < image.CompressionLevel)
-                                channelFreqs[i, j] = image.Frequences[freqNum++];
+                            var a = coeffs[u, v];
+                            sum += BasisFunction(a, u, v, x, y, height, width)*Alpha(u)*Alpha(v);
                         }
                     }
-                    var processedSubmatrix = DCT.IDCT2D(channelFreqs);
-                    processedSubmatrix.ShiftMatrixValues(128);
-                    result.SetSubmatrix(processedSubmatrix, y, x);
+                    output[x, y] = sum*Beta(height, width);
                 }
             }
-            return result;
+            return output;
+        }
+
+        public static double BasisFunction(double a, double u, double v, double x, double y, int height, int width)
+        {
+            var b = Math.Cos((2d*x + 1d)*u*Math.PI/(2*width));
+            var c = Math.Cos((2d*y + 1d)*v*Math.PI/(2*height));
+
+            return a*b*c;
+        }
+
+        private static double Alpha(int u)
+        {
+            if (u == 0)
+                return 1/Math.Sqrt(2);
+            return 1;
+        }
+
+        private static double Beta(int height, int width)
+        {
+            return 1d/width + 1d/height;
         }
     }
 }

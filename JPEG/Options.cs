@@ -4,7 +4,7 @@ namespace JPEG
 {
     public class Options
     {
-        [Option('e', "encode", DefaultValue = @"..\..\sample.bmp",
+        [Option('e', "encode", 
             HelpText = "Path to bmp file.")]
         public string PathToBmp { get; set; }
 
@@ -14,13 +14,15 @@ namespace JPEG
 
         [Option('w', "window", DefaultValue = 8,
             HelpText = "Size of DCT window")]
-        public int WindowSize { get; set; }
+        public int DCTSize { get; set; }
 
         [Option('q', "quota", DefaultValue = 100,
             HelpText = "Percentage of not ignoring high frequency")]
-        public int Qouta { get; set; }
+        public int Quota { get; set; }
 
-        [Option('d', "decode", HelpText = "Path to encoded image.")]
+        [Option('d', "decode", 
+            Required = false,
+            HelpText = "Path to encoded image.")]
         public string PathToEncoded { get; set; }
     }
 }

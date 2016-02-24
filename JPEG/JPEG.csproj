@@ -62,10 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapHelper.cs" />
-    <Compile Include="DCTHelper.cs" />
+    <Compile Include="BitsBuffer.cs" />
+    <Compile Include="BitsWithLength.cs" />
+    <Compile Include="DCTCompressor.cs" />
+    <Compile Include="DCTUncompressor.cs" />
+    <Compile Include="HuffmanChunk.cs" />
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="CompressedImage.cs" />
-    <Compile Include="DCT.cs" />
+    <Compile Include="DCTHelper.cs" />
     <Compile Include="HuffmanCodec.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="Options.cs" />

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
+using System.Linq;
 
 namespace JPEG
 {
@@ -42,6 +44,33 @@ namespace JPEG
             }
         }
 
+        public byte[] ToBytesArray()
+        {
+            var result = ImmutableList<byte>.Empty
+                .AddRange(BitConverter.GetBytes(Height))
+                .AddRange(BitConverter.GetBytes(Width))
+                .AddRange(BitConverter.GetBytes(CompressionLevel))
+                .AddRange(BitConverter.GetBytes(FrequencesPerBlock))
+                .ToBuilder();
+            for (var blockNum = 0; blockNum * FrequencesPerBlock < Frequences.Count; blockNum++)
+                for (var freqNum = 0; freqNum < FrequencesPerBlock; freqNum++)
+                    try
+                    {
+                        result.AddRange(BitConverter.GetBytes((short)Frequences[blockNum * FrequencesPerBlock + freqNum]));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Sum: {blockNum * FrequencesPerBlock + freqNum}");
+                        Console.WriteLine($"blockNum: {blockNum}, FreqPerBlock: {FrequencesPerBlock}, freqNum: {freqNum}");
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine();
+                        Console.WriteLine($"Count: {Frequences.Count}");
+                        Console.WriteLine(blockNum * FrequencesPerBlock + freqNum);
+                        Environment.Exit(0);
+                    }
+            return result.ToArray();
+        }
+
         public static CompressedImage Load(string path, int DCTSize)
         {
             var result = new CompressedImage();
@@ -63,6 +92,40 @@ namespace JPEG
 
                 var blocksCount = result.Height*result.Width/(DCTSize*DCTSize);
                 result.Frequences = new List<double>(blocksCount*result.FrequencesPerBlock);
+
+                for (var blockNum = 0; blockNum < blocksCount; blockNum++)
+                {
+                    for (var freqNum = 0; freqNum < blockSize; freqNum++)
+                    {
+                        sr.Read(buffer, 0, 2);
+                        result.Frequences.Add(BitConverter.ToInt16(buffer, 0));
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static CompressedImage LoadFromBytesArray(byte[] source, int DCTSize)
+        {
+            var result = new CompressedImage();
+            using (var sr = new MemoryStream(source))
+            {
+                var buffer = new byte[4];
+
+                sr.Read(buffer, 0, 4);
+                result.Height = BitConverter.ToInt32(buffer, 0);
+
+                sr.Read(buffer, 0, 4);
+                result.Width = BitConverter.ToInt32(buffer, 0);
+
+                sr.Read(buffer, 0, 4);
+                result.CompressionLevel = BitConverter.ToInt32(buffer, 0);
+
+                sr.Read(buffer, 0, 4);
+                var blockSize = result.FrequencesPerBlock = BitConverter.ToInt32(buffer, 0);
+
+                var blocksCount = result.Height * result.Width / (DCTSize * DCTSize);
+                result.Frequences = new List<double>(blocksCount * result.FrequencesPerBlock);
 
                 for (var blockNum = 0; blockNum < blocksCount; blockNum++)
                 {
